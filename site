@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para rillary macaquinha 💖</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  overflow:hidden;
+  text-align:center;
+  color:white;
+}
+
+/* TELA INICIAL */
+#inicio {
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  z-index:10;
+  transition:1s;
+}
+
+.botao {
+  padding:20px 30px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4d6d;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+
+.botao:hover {
+  transform:scale(1.1);
+}
+
+/* SITE ESCONDIDO */
+#conteudo {
+  opacity:0;
+  transform:scale(0.8);
+  transition:1s;
+}
+
+/* QUANDO ATIVA */
+.mostrar {
+  opacity:1 !important;
+  transform:scale(1) !important;
+}
+
+/* TEXTO */
+.message {
+  max-width:650px;
+  margin:20px auto;
+  padding:25px;
+  background:rgba(255,255,255,0.2);
+  border-radius:25px;
+  backdrop-filter:blur(10px);
+}
+
+/* GALERIA */
+.gallery img {
+  width:200px;
+  height:200px;
+  border-radius:20px;
+  margin:10px;
+  object-fit:cover;
+  transition:0.3s;
+}
+
+.gallery img:hover {
+  transform:scale(1.1);
+}
+
+/* BOTÃO */
+button {
+  padding:15px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d6d;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  margin:20px;
+}
+
+/* CORAÇÕES */
+.heart {
+  position:fixed;
+  top:-10px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform:translateY(100vh); }
+}
+
+/* 💍 DATA ANIMADA */
+.data {
+  margin-top:30px;
+  font-size:22px;
+  font-weight:bold;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform:scale(1); opacity:0.8; }
+  50% { transform:scale(1.2); opacity:1; }
+  100% { transform:scale(1); opacity:0.8; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💌 TELA DE CARTA -->
+<div id="inicio">
+  <h1>💌 Clica aquiiiiiii hehe</h1>
+  <button class="botao" onclick="abrirCarta()">Abrir 💖</button>
+</div>
+
+<!-- 💖 CONTEÚDO -->
+<div id="conteudo">
+
+<h1>Eu te amo 💕</h1>
+
+<div class="message">
+❤️ Eu te amo, Rillary. Você é tudo para mim. Desde que você chegou na minha vida, eu fui mil vezes melhor. Você é tudo que eu já encontrei, e eu não sei o que faria se eu te perdesse. Muito obrigado por tudo, por ser quem você é, por ser minha namorada. Eu te amo, nenenzinha. ❤️
+</div>
+
+<!-- 🎵 MÚSICA -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="tocarMusica()">Tocar nossa música 🎶</button>
+
+<!-- 📸 FOTOS -->
+<div class="gallery">
+  <img src="foto1.jpeg">
+  <img src="foto2.jpeg">
+  <img src="foto3.jpeg">
+  <img src="foto4.jpeg">
+</div>
+
+<!-- 💍 DATA -->
+<div class="data">
+  💍 13/04 ❤️
+</div>
+
+</div>
+
+<script>
+const musica = document.getElementById('musica');
+musica.volume = 0.5;
+
+function tocarMusica(){
+  musica.play();
+}
+
+function abrirCarta(){
+  document.getElementById('inicio').style.opacity = "0";
+  setTimeout(()=>{
+    document.getElementById('inicio').style.display = "none";
+    document.getElementById('conteudo').classList.add('mostrar');
+    musica.play();
+  },800);
+}
+
+/* CORAÇÕES */
+setInterval(()=>{
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML = '💖';
+  heart.style.left = Math.random()*100+'vw';
+  heart.style.fontSize = (Math.random()*20+15)+'px';
+  heart.style.animationDuration = (Math.random()*3+2)+'s';
+  document.body.appendChild(heart);
+
+  setTimeout(()=> heart.remove(),5000);
+},300);
+</script>
+
+</body>
+</html>
